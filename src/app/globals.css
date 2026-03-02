@@ -1,26 +1,96 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: 0 0 0;
+  --text: 250 250 255;
+  --accent: 255 120 200; /* baby pink */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Force black background — override any Tailwind/base defaults */
+@layer base {
+  html {
+    background: #000 !important;
+    color-scheme: dark;
+  }
+  body {
+    background: #000 !important;
+    color: rgb(var(--text));
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   }
 }
 
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  min-height: 100%;
+}
+
+/* Solid black underlay — stays behind everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: #000 !important;
+}
+
+/* Translucent gradient wash — blues and pinks (behind breathing layers) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: -30%;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    /* Pinks */
+    radial-gradient(120% 120% at 10% 10%, rgba(255, 150, 220, 0.14), transparent 45%),
+    radial-gradient(100% 100% at 30% 25%, rgba(255, 120, 200, 0.12), transparent 50%),
+    radial-gradient(100% 100% at 90% 25%, rgba(255, 140, 210, 0.1), transparent 45%),
+    /* Blues */
+    radial-gradient(110% 110% at 55% 40%, rgba(120, 180, 255, 0.12), transparent 48%),
+    radial-gradient(100% 100% at 70% 55%, rgba(140, 170, 255, 0.11), transparent 50%),
+    radial-gradient(120% 120% at 20% 85%, rgba(100, 160, 255, 0.1), transparent 50%),
+    radial-gradient(100% 100% at 85% 80%, rgba(130, 190, 255, 0.11), transparent 48%),
+    /* Center: soft blue */
+    radial-gradient(80% 80% at 50% 50%, rgba(140, 180, 255, 0.08), transparent 55%);
+  filter: blur(100px) saturate(1.2);
+  mix-blend-mode: normal;
+  opacity: 0.5;
+}
+
+/* Slow breathing — inhale (lighter) / exhale (darker, but not too dark) */
+@keyframes breathing-hue {
+  0%, 100% {
+    opacity: 0.18;
+  }
+  50% {
+    opacity: 0.65;
+  }
+}
+
+@keyframes breathing-hue-alt {
+  0%, 100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.12;
+  }
+}
+
+#site {
+  position: relative;
+  z-index: 1;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(var(--accent), 0.7);
+  outline-offset: 2px;
 }
