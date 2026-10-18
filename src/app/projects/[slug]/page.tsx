@@ -1,102 +1,91 @@
 import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
-import { GlassCard } from "@/components/ui/GlassCard";
-import { Badge } from "@/components/ui/Badge";
 import { projects, TAGS_HIDDEN_ON_CARDS } from "@/content/projects";
 import { MediaAndArchitectureCard } from "@/components/projects/MediaAndArchitectureCard";
+import { roman } from "@/components/ui/Fern";
 
-export default async function ProjectDetail({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function ProjectDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const p = projects.find((x) => x.slug === slug);
   if (!p) return notFound();
   if (p.experienceOnly) redirect("/projects");
 
-  const hasMediaOrTable =
-    p.videoUrl || p.pitchDeckUrl || p.executiveSummaryUrl || p.architectureTable;
+  const chapter = projects.filter((x) => !x.experienceOnly).indexOf(p) + 1;
+  const tags = p.tags.filter((t) => !TAGS_HIDDEN_ON_CARDS.includes(t));
+  const hasMediaOrTable = p.videoUrl || p.pitchDeckUrl || p.executiveSummaryUrl || p.architectureTable;
 
   return (
-    <main className="mx-auto max-w-4xl px-5 pb-20 pt-10">
-      <div className="flex flex-col gap-6">
-        <Link
-          href="/projects"
-          className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors w-fit mb-2"
-        >
-          <ArrowLeft size={16} />
-          Back
-        </Link>
-        <header>
-          <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-white">{p.title}</h1>
-          {p.roleAndDate && (
-            <p className="mt-2 text-sm text-white/60">{p.roleAndDate}</p>
-          )}
-          <p className="mt-3 text-white/80">{p.subtitle}</p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {p.tags.filter((t) => !TAGS_HIDDEN_ON_CARDS.includes(t)).map((t) => (
-              <Badge key={t}>{t}</Badge>
-            ))}
-          </div>
+    <main className="mx-auto max-w-5xl px-5 pb-28 pt-12 sm:px-8 sm:pt-16">
+      <Link href="/projects" className="text-[0.95rem] text-lichen no-underline hover:text-parchment">
+        ← Back
+      </Link>
+
+      <article className="mx-auto mt-12 max-w-[42rem]">
+        <header className="text-center">
+          <p className="font-display text-[1.5rem] text-foxglove">Chapter {roman(chapter)}</p>
+          <h1 className="mt-3 font-display text-[clamp(2.5rem,6vw,3.75rem)] font-medium leading-[1.05] text-parchment">
+            {p.title}
+          </h1>
+          {p.roleAndDate && <p className="mt-4 text-[0.95rem] text-lichen">{p.roleAndDate}</p>}
+          <p className="mt-4 text-[1.2rem] italic leading-relaxed text-lichen">{p.subtitle}</p>
+          {tags.length > 0 && <p className="mt-4 text-[0.85rem] text-lichen/80">{tags.join(", ")}</p>}
+          <div className="mx-auto mt-10 h-px w-16 bg-foxglove/70" aria-hidden />
         </header>
 
         {hasMediaOrTable && (
-          <MediaAndArchitectureCard
-            videoUrl={p.videoUrl}
-            pitchDeckUrl={p.pitchDeckUrl}
-            executiveSummaryUrl={p.executiveSummaryUrl}
-            architectureTable={p.architectureTable}
-          />
+          <div className="mt-12">
+            <MediaAndArchitectureCard
+              videoUrl={p.videoUrl}
+              pitchDeckUrl={p.pitchDeckUrl}
+              executiveSummaryUrl={p.executiveSummaryUrl}
+              architectureTable={p.architectureTable}
+            />
+          </div>
         )}
 
         {p.contentSections && p.contentSections.length > 0 && (
-          <div className="flex flex-col gap-5">
+          <div className="mt-12 flex flex-col gap-12">
             {p.contentSections.map((section, i) => (
-              <div
-                key={i}
-                className="rounded-2xl border border-white/15 p-6 sm:p-7"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 50%, rgba(255,120,200,0.04) 100%)",
-                }}
-              >
-                <h2 className="text-lg font-semibold text-white tracking-tight">{section.heading}</h2>
-                <div className="mt-4 max-w-prose space-y-4 text-[15px] leading-[1.65] text-white/95">
+              <section key={i}>
+                <h2 className="font-display text-[1.8rem] font-medium italic leading-tight text-parchment">
+                  {section.heading}
+                </h2>
+                <div className="mt-4 space-y-4 text-[1.0625rem] leading-[1.75] text-parchment/90">
                   {section.body.split(/\n\n+/).map((block, j) => {
                     const lines = block.split("\n").filter(Boolean);
                     const bulletLines = lines.filter((l) => l.trim().startsWith("•"));
                     if (bulletLines.length === lines.length && bulletLines.length > 0) {
                       return (
-                        <ul key={j} className="list-disc space-y-2 pl-5">
+                        <ul key={j} className="flex flex-col gap-2">
                           {bulletLines.map((line, k) => (
-                            <li key={k} className="pl-0.5">{line.replace(/^•\s*/, "").trim()}</li>
+                            <li key={k} className="flex gap-3">
+                              <span className="text-foxglove" aria-hidden>
+                                –
+                              </span>
+                              <span>{line.replace(/^•\s*/, "").trim()}</span>
+                            </li>
                           ))}
                         </ul>
                       );
                     }
                     return (
-                      <p key={j} className="whitespace-pre-line first:mt-0">
+                      <p key={j} className="whitespace-pre-line">
                         {block}
                       </p>
                     );
                   })}
                 </div>
-              </div>
+              </section>
             ))}
           </div>
         )}
 
         {p.confidentialityNote && (
-          <GlassCard className="p-4 border-[rgba(var(--accent),0.25)]">
-            <p className="text-sm text-white/70">
-              <span className="text-white font-medium">Confidentiality:</span> {p.confidentialityNote}
-            </p>
-          </GlassCard>
+          <p className="mt-14 border-l-2 border-foxglove/60 pl-4 text-[0.95rem] italic text-lichen">
+            <span className="not-italic text-parchment">Confidentiality:</span> {p.confidentialityNote}
+          </p>
         )}
-
-      </div>
+      </article>
     </main>
   );
 }
