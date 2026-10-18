@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { BookPage, Paper, ChapterOpening, PageTurn, Placeholder, RunningHead, SectionTitle } from "@/components/book/Book";
+import { BookPage, ChapterOpening, PageTurn, Paper, Placeholder, RunningHead, SectionTitle } from "@/components/book/Book";
 import { ProjectArticle } from "@/components/book/ProjectArticle";
 import { AAJERA_SLUG, WORK_SLUGS, projectBySlug, shortTitle } from "@/content/book";
 import { roman } from "@/components/ui/Ornaments";
@@ -17,47 +17,36 @@ export default async function WorkChapter({ params }: { params: Promise<{ slug: 
   return (
     <BookPage>
       <RunningHead>Chapter II · Work · {shortTitle(slug)}</RunningHead>
-      <Paper>
-        {slug === AAJERA_SLUG ? <AajeraChapter label={label} /> : <ProjectArticle p={projectBySlug(slug)!} label={label} />}
-      </Paper>
+      {slug === AAJERA_SLUG ? <AajeraChapter label={label} /> : <ProjectArticle p={projectBySlug(slug)!} label={label} />}
       <PageTurn href={`/work/${slug}`} />
     </BookPage>
   );
 }
 
 function AajeraChapter({ label }: { label: string }) {
+  const sections = [
+    { heading: "In brief", hint: "three lines: the problem, what you built, and the result (for example, 30 beta users)." },
+    { heading: "Why I built it", hint: "you never found a calendar you liked, so you built your own; then friends asked to use it. About 100 words." },
+    { heading: "What it looks like", hint: "two or three screenshots: the calendar, the monthly reflection prompt, the daily view." },
+    { heading: "Decisions I made", hint: "two or three product choices and why, such as making daily reflection optional, or keeping daily, weekly, and monthly views separate." },
+  ];
   return (
-    <article>
-      <ChapterOpening
-        label={label}
-        title="Aajera"
-        subtitle="A calendar and task planner that prompts you to reflect on your day and month."
-      />
-      <div className="mx-auto flex max-w-[42rem] flex-col gap-12">
-        <section>
-          <SectionTitle>In brief</SectionTitle>
-          <Placeholder className="mt-4">
-            three lines: the problem, what you built, and the result (for example, 30 beta users).
-          </Placeholder>
-        </section>
-        <section>
-          <SectionTitle>Why I built it</SectionTitle>
-          <Placeholder className="mt-4">
-            you never found a calendar you liked, so you built your own; then friends asked to use it. About 100 words.
-          </Placeholder>
-        </section>
-        <section>
-          <SectionTitle>What it looks like</SectionTitle>
-          <Placeholder className="mt-4">two or three screenshots: the calendar, the monthly reflection prompt, the daily view.</Placeholder>
-        </section>
-        <section>
-          <SectionTitle>Decisions I made</SectionTitle>
-          <Placeholder className="mt-4">
-            two or three product choices and why, such as making daily reflection optional, or keeping daily, weekly, and
-            monthly views separate.
-          </Placeholder>
-        </section>
-      </div>
+    <article className="flex flex-col gap-8">
+      <Paper>
+        <ChapterOpening
+          label={label}
+          title="Aajera"
+          subtitle="A calendar and task planner that prompts you to reflect on your day and month."
+        />
+      </Paper>
+      {sections.map((s) => (
+        <Paper key={s.heading}>
+          <section className="mx-auto max-w-[42rem]">
+            <SectionTitle>{s.heading}</SectionTitle>
+            <Placeholder className="mt-4">{s.hint}</Placeholder>
+          </section>
+        </Paper>
+      ))}
     </article>
   );
 }

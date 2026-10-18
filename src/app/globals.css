@@ -154,6 +154,7 @@ details[open] .chevron {
   colors without changing any component.
 */
 .paper {
+  padding: 2.75rem 1.5rem;
   --color-parchment: #2b2a21;
   --color-lichen: #6b644f;
   --color-gilt: #85672a;
@@ -161,6 +162,7 @@ details[open] .chevron {
   --color-board: #e4d9bd;
   color: var(--color-parchment);
   background-color: #efe6cf;
+
   background-image: radial-gradient(130% 110% at 50% 40%, transparent 62%, rgb(122 96 48 / 0.16) 100%);
   border-radius: 2px;
   box-shadow:

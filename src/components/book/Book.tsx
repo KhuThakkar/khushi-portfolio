@@ -100,5 +100,5 @@ export function BookPage({ children }: { children: React.ReactNode }) {
 
 /** A cream paper page laid on the cloth, for reading-heavy chapters. */
 export function Paper({ children }: { children: React.ReactNode }) {
-  return <div className="paper mt-6 px-6 pb-16 pt-2 sm:px-16 sm:pb-20">{children}</div>;
+  return <div className="paper px-6 py-12 sm:px-16 sm:py-14">{children}</div>;
 }
