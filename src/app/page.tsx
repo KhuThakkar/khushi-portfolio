@@ -1,23 +1,8 @@
-"use client";
-
-import { useMemo, useState } from "react";
 import Link from "next/link";
-import { projects } from "@/content/projects";
 import { CornerFlourish, roman } from "@/components/ui/Ornaments";
-
-type Mode = "impact" | "technical";
-
-const EXPLORING = [
-  "System design fundamentals",
-  "Data integrity & reconciliation pipelines",
-  "Product engineering at scale",
-  "AI-assisted workflows",
-];
+import { CHAPTERS, WORK_SLUGS, APPENDIX_SLUGS, shortTitle } from "@/content/book";
 
 export default function HomePage() {
-  const [mode, setMode] = useState<Mode>("impact");
-  const featured = useMemo(() => projects.slice(0, 3), []);
-
   return (
     <main className="mx-auto max-w-5xl px-5 pb-28 sm:px-8">
       {/* Title page */}
@@ -48,7 +33,7 @@ export default function HomePage() {
 
         <div className="mt-10 flex flex-wrap items-baseline gap-x-7 gap-y-3">
           <Link
-            href="/projects"
+            href="/work"
             className="font-display text-[1.6rem] font-medium italic text-gilt underline decoration-gilt/40 hover:decoration-gilt"
           >
             View Projects
@@ -83,101 +68,40 @@ export default function HomePage() {
       </header>
 
       {/* Contents */}
-      <section className="grid gap-8 border-t border-tooling pt-10 md:grid-cols-[12rem_1fr] md:gap-12">
-        <div>
-          <h2 className="font-display text-[2rem] font-medium italic leading-tight text-parchment">
-            Some of my latest work
-          </h2>
-          <div className="mt-5 flex gap-5 text-[0.95rem]" role="group" aria-label="Show highlights by">
-            <ModeButton active={mode === "impact"} onClick={() => setMode("impact")}>
-              Impact
-            </ModeButton>
-            <ModeButton active={mode === "technical"} onClick={() => setMode("technical")}>
-              Technical
-            </ModeButton>
-          </div>
-        </div>
-
-        <div>
-          <ol className="flex flex-col">
-            {featured.map((p, i) => (
-              <li key={p.slug} className="border-b border-tooling/70 py-7 first:pt-0">
-                <Link href={`/projects/${p.slug}`} className="group block no-underline">
-                  <div className="flex items-baseline">
-                    <span className="w-12 shrink-0 font-display text-[1.35rem] text-gilt">{roman(i + 1)}.</span>
-                    <span className="font-display text-[1.75rem] font-medium leading-tight text-parchment decoration-gilt/60 underline-offset-4 group-hover:underline">
-                      {p.title}
-                    </span>
-                    {p.roleAndDate && (
-                      <>
-                        <span className="leader hidden sm:block" aria-hidden />
-                        <span className="hidden shrink-0 text-[0.9rem] text-lichen sm:block">{p.roleAndDate}</span>
-                      </>
-                    )}
-                  </div>
-                  <div className="pl-12">
-                    {p.roleAndDate && <p className="mt-1 text-[0.9rem] text-lichen sm:hidden">{p.roleAndDate}</p>}
-                    <p className="mt-2 max-w-[40rem] italic text-lichen">{p.subtitle}</p>
-                    <ul className="mt-4 flex max-w-[40rem] flex-col gap-2">
-                      {(mode === "impact" ? p.highlights.impact : p.highlights.technical).slice(0, 2).map((x) => (
-                        <li key={x} className="flex gap-3 text-parchment/90">
-                          <span className="text-gilt" aria-hidden>
-                            –
-                          </span>
-                          <span>{x}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </Link>
+      <section id="contents" className="scroll-mt-8 border-t border-tooling pt-12">
+        <h2 className="text-center font-display text-[2.4rem] font-medium italic text-parchment">Contents</h2>
+        <ol className="mx-auto mt-10 flex max-w-[44rem] flex-col gap-9">
+          {CHAPTERS.map((c) => {
+            const subs = c.href === "/work" ? WORK_SLUGS : c.href === "/appendix" ? APPENDIX_SLUGS : [];
+            return (
+              <li key={c.href}>
+                <Link href={c.href} className="group flex items-baseline no-underline">
+                  <span className="w-12 shrink-0 font-display text-[1.4rem] text-gilt">{c.numeral && `${c.numeral}.`}</span>
+                  <span className="font-display text-[1.9rem] font-medium leading-tight text-parchment decoration-gilt/60 underline-offset-4 group-hover:underline">
+                    {c.title}
+                  </span>
+                                  </Link>
+                <p className="mt-1 pl-12 italic text-lichen">{c.summary}</p>
+                {subs.length > 0 && (
+                  <ol className="mt-3 flex flex-col gap-1.5 pl-12">
+                    {subs.map((slug, i) => (
+                      <li key={slug}>
+                        <Link
+                          href={`${c.href}/${slug}`}
+                          className="flex items-baseline text-parchment/90 no-underline hover:text-gilt"
+                        >
+                          <span className="w-8 shrink-0 text-[0.9rem] text-gilt/80">{roman(i + 1).toLowerCase()}.</span>
+                          <span>{shortTitle(slug)}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ol>
+                )}
               </li>
-            ))}
-          </ol>
-          <p className="mt-6 pl-12 text-[0.9rem] italic text-lichen">Some work anonymized for confidentiality.</p>
-        </div>
-      </section>
-
-      {/* Currently exploring */}
-      <section className="mt-20 grid gap-6 border-t border-tooling pt-10 md:grid-cols-[12rem_1fr] md:gap-12">
-        <h2 className="font-display text-[2rem] font-medium italic leading-tight text-parchment">
-          Currently Exploring
-        </h2>
-        <ul className="flex flex-col gap-2 text-parchment/90">
-          {EXPLORING.map((x) => (
-            <li key={x} className="flex gap-3">
-              <span className="text-gilt" aria-hidden>
-                –
-              </span>
-              <span>{x}</span>
-            </li>
-          ))}
-        </ul>
+            );
+          })}
+        </ol>
       </section>
     </main>
-  );
-}
-
-function ModeButton({
-  active,
-  onClick,
-  children,
-}: {
-  active: boolean;
-  onClick: () => void;
-  children: React.ReactNode;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={active}
-      className={
-        active
-          ? "text-parchment underline decoration-gilt decoration-2 underline-offset-[6px]"
-          : "text-lichen hover:text-parchment"
-      }
-    >
-      {children}
-    </button>
   );
 }

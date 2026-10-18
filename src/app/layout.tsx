@@ -20,8 +20,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               KT<span className="text-lichen">.lab</span>
             </Link>
             <div className="flex items-baseline gap-6 text-[0.95rem]">
-              <Link href="/projects" className="text-lichen no-underline hover:text-parchment">
-                Projects
+              <Link href="/#contents" className="text-lichen no-underline hover:text-parchment">
+                Contents
               </Link>
               <a href="/resume.pdf" className="text-lichen no-underline hover:text-parchment">
                 Resume
