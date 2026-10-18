@@ -2,7 +2,7 @@ import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import { projects, TAGS_HIDDEN_ON_CARDS } from "@/content/projects";
 import { MediaAndArchitectureCard } from "@/components/projects/MediaAndArchitectureCard";
-import { roman } from "@/components/ui/Fern";
+import { roman } from "@/components/ui/Ornaments";
 
 export default async function ProjectDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

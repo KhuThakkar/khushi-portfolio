@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { projects, TAGS_HIDDEN_ON_CARDS, type Project } from "@/content/projects";
-import { roman } from "@/components/ui/Fern";
+import { roman } from "@/components/ui/Ornaments";
 
 const EXPERIENCE_ORDER = [
   "gray-acumen-product-discovery",

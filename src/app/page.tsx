@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { projects } from "@/content/projects";
-import { CornerFlourish, Fern, roman } from "@/components/ui/Fern";
+import { CornerVine, roman } from "@/components/ui/Ornaments";
 
 type Mode = "impact" | "technical";
 
@@ -22,12 +22,11 @@ export default function HomePage() {
     <main className="mx-auto max-w-5xl px-5 pb-28 sm:px-8">
       {/* Title page */}
       <header className="title-page-in pb-16 pt-10 sm:pb-20 sm:pt-14">
-        <div className="cover-frame relative px-6 py-12 sm:px-14 sm:py-16">
-        <CornerFlourish className="pointer-events-none absolute left-3 top-3 h-11 w-11" />
-        <CornerFlourish className="pointer-events-none absolute right-3 top-3 h-11 w-11 rotate-90" />
-        <CornerFlourish className="pointer-events-none absolute bottom-3 right-3 h-11 w-11 rotate-180" />
-        <CornerFlourish className="pointer-events-none absolute bottom-3 left-3 h-11 w-11 -rotate-90" />
-        <Fern className="pointer-events-none absolute right-8 top-44 hidden h-[22rem] w-auto md:block lg:right-14" />
+        <div className="cover-frame relative px-9 py-16 sm:px-16 sm:py-20">
+        <CornerVine className="pointer-events-none absolute left-2 top-2 w-44 sm:w-80" />
+        <CornerVine className="pointer-events-none absolute right-2 top-2 w-44 -scale-x-100 sm:w-80" />
+        <CornerVine className="pointer-events-none absolute bottom-2 left-2 w-44 -scale-y-100 sm:w-80" />
+        <CornerVine className="pointer-events-none absolute bottom-2 right-2 w-44 -scale-100 sm:w-80" />
 
         <h1 className="font-display text-[clamp(3.25rem,9vw,6.25rem)] font-medium leading-[0.95] tracking-[-0.01em] gilt-stamp">
           Hello! I&apos;m Khushi.
