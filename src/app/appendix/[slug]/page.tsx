@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { BookPage, PageTurn, RunningHead } from "@/components/book/Book";
+import { BookPage, Paper, PageTurn, RunningHead } from "@/components/book/Book";
 import { ProjectArticle } from "@/components/book/ProjectArticle";
 import { APPENDIX_SLUGS, projectBySlug, shortTitle } from "@/content/book";
 import { roman } from "@/components/ui/Ornaments";
@@ -17,7 +17,9 @@ export default async function AppendixEntry({ params }: { params: Promise<{ slug
   return (
     <BookPage>
       <RunningHead>Appendix · {shortTitle(slug)}</RunningHead>
-      <ProjectArticle p={p} label={`Appendix ${roman(index + 1)}`} />
+      <Paper>
+        <ProjectArticle p={p} label={`Appendix ${roman(index + 1)}`} />
+      </Paper>
       <PageTurn href={`/appendix/${slug}`} />
     </BookPage>
   );

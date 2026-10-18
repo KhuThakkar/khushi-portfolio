@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { BookPage, ChapterOpening, PageTurn, Placeholder, RunningHead, SectionTitle } from "@/components/book/Book";
+import { BookPage, Paper, ChapterOpening, PageTurn, Placeholder, RunningHead, SectionTitle } from "@/components/book/Book";
 import { ProjectArticle } from "@/components/book/ProjectArticle";
 import { AAJERA_SLUG, WORK_SLUGS, projectBySlug, shortTitle } from "@/content/book";
 import { roman } from "@/components/ui/Ornaments";
@@ -17,7 +17,9 @@ export default async function WorkChapter({ params }: { params: Promise<{ slug: 
   return (
     <BookPage>
       <RunningHead>Chapter II · Work · {shortTitle(slug)}</RunningHead>
-      {slug === AAJERA_SLUG ? <AajeraChapter label={label} /> : <ProjectArticle p={projectBySlug(slug)!} label={label} />}
+      <Paper>
+        {slug === AAJERA_SLUG ? <AajeraChapter label={label} /> : <ProjectArticle p={projectBySlug(slug)!} label={label} />}
+      </Paper>
       <PageTurn href={`/work/${slug}`} />
     </BookPage>
   );

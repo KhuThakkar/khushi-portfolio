@@ -147,3 +147,26 @@ details[open] .chevron {
   outline: 1px solid rgb(201 169 97 / 0.25);
   outline-offset: -9px;
 }
+
+/*
+  A page of the book: cream paper with dark ink, laid on the green cloth.
+  It re-points the palette variables, so everything inside switches to ink
+  colors without changing any component.
+*/
+.paper {
+  --color-parchment: #2b2a21;
+  --color-lichen: #6b644f;
+  --color-gilt: #85672a;
+  --color-tooling: #cdbf99;
+  --color-board: #e4d9bd;
+  color: var(--color-parchment);
+  background-color: #efe6cf;
+  background-image: radial-gradient(130% 110% at 50% 40%, transparent 62%, rgb(122 96 48 / 0.16) 100%);
+  border-radius: 2px;
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.25),
+    0 28px 60px -24px rgb(0 0 0 / 0.7);
+}
+.paper ::selection {
+  background: rgb(133 103 42 / 0.25);
+}

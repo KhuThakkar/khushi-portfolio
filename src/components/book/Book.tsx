@@ -97,3 +97,8 @@ export function DashList({ items, className = "" }: { items: string[]; className
 export function BookPage({ children }: { children: React.ReactNode }) {
   return <main className="mx-auto max-w-5xl px-5 pb-20 pt-10 sm:px-8 sm:pt-12">{children}</main>;
 }
+
+/** A cream paper page laid on the cloth, for reading-heavy chapters. */
+export function Paper({ children }: { children: React.ReactNode }) {
+  return <div className="paper mt-6 px-6 pb-16 pt-2 sm:px-16 sm:pb-20">{children}</div>;
+}
