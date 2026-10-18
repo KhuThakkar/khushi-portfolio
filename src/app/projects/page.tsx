@@ -205,7 +205,7 @@ export default function ProjectsPage() {
                   >
                     <p className="text-lg font-medium leading-snug text-white/95">1-800-FLOWERS</p>
                     <p className="mt-1 text-sm text-white/60">
-                      Information Technology Intern · June 2023 – Sept 2023
+                      Software Engineering Intern · June 2023 – Sept 2023
                     </p>
                   </div>
                 );
@@ -222,7 +222,7 @@ export default function ProjectsPage() {
                   >
                     <p className="text-lg font-medium leading-snug text-white/95">Sarla Consulting</p>
                     <p className="mt-1 text-sm text-white/60">
-                      Information Technology Intern · June 2022 – Sept 2022
+                      Technology Intern · June 2022 – Sept 2022
                     </p>
                   </div>
                 );
@@ -262,9 +262,9 @@ export default function ProjectsPage() {
 
               const customHeader =
                 is1800Accessibility
-                  ? { title: "1-800-FLOWERS", roleLine: "Information Technology Intern · June 2023 – Sept 2023" }
+                  ? { title: "1-800-FLOWERS", roleLine: "Software Engineering Intern · June 2023 – Sept 2023" }
                   : isSarla
-                    ? { title: "Sarla Consulting", roleLine: "Information Technology Intern · June 2022 – Sept 2022" }
+                    ? { title: "Sarla Consulting", roleLine: "Technology Intern · June 2022 – Sept 2022" }
                     : isGrayAcumen
                       ? { title: "Gray Acumen", roleLine: "Business Analyst Intern · May 2024 – Sept 2024" }
                       : isGenZ

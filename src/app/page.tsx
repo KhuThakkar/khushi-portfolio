@@ -45,7 +45,7 @@ export default function HomePage() {
               transition={{ duration: 0.55, delay: 0.05 }}
               className="mt-4 text-white/75 text-[15px] sm:text-base leading-relaxed max-w-lg"
             >
-              Product-minded full stack engineer. Early-career full stack engineer passionate about building user-first systems. I'm especially drawn to messy, real-world problems — turning complex workflows into tools people actually enjoy using.
+              I build software for the messy parts of running a business: reconciling data, fixing slow workflows, and figuring out what&apos;s worth building.
             </motion.p>
 
             <motion.p
@@ -75,7 +75,7 @@ export default function HomePage() {
                 Resume
               </Button>
               <div className="flex items-center gap-2 pl-1">
-                <IconLink href="https://github.com/" label="GitHub" icon={<Github size={18} />} />
+                <IconLink href="https://github.com/khuthakkar" label="GitHub" icon={<Github size={18} />} />
                 <IconLink href="https://www.linkedin.com/in/khushi-thakkar-/" label="LinkedIn" icon={<Linkedin size={18} />} />
                 <IconLink href="mailto:khushikthakkar@gmail.com" label="Email" icon={<Mail size={18} />} />
               </div>

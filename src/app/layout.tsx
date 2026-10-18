@@ -6,7 +6,7 @@ import { BreathingHue } from "@/components/animations/BreathingHue";
 
 export const metadata: Metadata = {
   title: "Khushi Thakkar — Portfolio",
-  description: "Product-minded full stack engineer portfolio.",
+  description: "Khushi Thakkar builds software for the messy parts of running a business.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
