@@ -22,14 +22,14 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
 
       <article className="mx-auto mt-12 max-w-[42rem]">
         <header className="text-center">
-          <p className="font-display text-[1.5rem] text-foxglove">Chapter {roman(chapter)}</p>
+          <p className="font-display text-[1.5rem] text-gilt">Chapter {roman(chapter)}</p>
           <h1 className="mt-3 font-display text-[clamp(2.5rem,6vw,3.75rem)] font-medium leading-[1.05] text-parchment">
             {p.title}
           </h1>
           {p.roleAndDate && <p className="mt-4 text-[0.95rem] text-lichen">{p.roleAndDate}</p>}
           <p className="mt-4 text-[1.2rem] italic leading-relaxed text-lichen">{p.subtitle}</p>
           {tags.length > 0 && <p className="mt-4 text-[0.85rem] text-lichen/80">{tags.join(", ")}</p>}
-          <div className="mx-auto mt-10 h-px w-16 bg-foxglove/70" aria-hidden />
+          <div className="mx-auto mt-10 h-px w-16 bg-gilt/70" aria-hidden />
         </header>
 
         {hasMediaOrTable && (
@@ -59,7 +59,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                         <ul key={j} className="flex flex-col gap-2">
                           {bulletLines.map((line, k) => (
                             <li key={k} className="flex gap-3">
-                              <span className="text-foxglove" aria-hidden>
+                              <span className="text-gilt" aria-hidden>
                                 –
                               </span>
                               <span>{line.replace(/^•\s*/, "").trim()}</span>
@@ -81,7 +81,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
         )}
 
         {p.confidentialityNote && (
-          <p className="mt-14 border-l-2 border-foxglove/60 pl-4 text-[0.95rem] italic text-lichen">
+          <p className="mt-14 border-l-2 border-gilt/60 pl-4 text-[0.95rem] italic text-lichen">
             <span className="not-italic text-parchment">Confidentiality:</span> {p.confidentialityNote}
           </p>
         )}

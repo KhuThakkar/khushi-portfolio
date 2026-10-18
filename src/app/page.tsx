@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { projects } from "@/content/projects";
-import { Fern, roman } from "@/components/ui/Fern";
+import { CornerFlourish, Fern, roman } from "@/components/ui/Fern";
 
 type Mode = "impact" | "technical";
 
@@ -21,14 +21,19 @@ export default function HomePage() {
   return (
     <main className="mx-auto max-w-5xl px-5 pb-28 sm:px-8">
       {/* Title page */}
-      <header className="title-page-in relative pb-16 pt-16 sm:pb-24 sm:pt-24">
-        <Fern className="pointer-events-none absolute -right-6 top-6 hidden h-[26rem] w-auto sm:block lg:right-4" />
+      <header className="title-page-in pb-16 pt-10 sm:pb-20 sm:pt-14">
+        <div className="cover-frame relative px-6 py-12 sm:px-14 sm:py-16">
+        <CornerFlourish className="pointer-events-none absolute left-3 top-3 h-11 w-11" />
+        <CornerFlourish className="pointer-events-none absolute right-3 top-3 h-11 w-11 rotate-90" />
+        <CornerFlourish className="pointer-events-none absolute bottom-3 right-3 h-11 w-11 rotate-180" />
+        <CornerFlourish className="pointer-events-none absolute bottom-3 left-3 h-11 w-11 -rotate-90" />
+        <Fern className="pointer-events-none absolute right-8 top-44 hidden h-[22rem] w-auto md:block lg:right-14" />
 
-        <h1 className="font-display text-[clamp(3.25rem,9vw,6.25rem)] font-medium leading-[0.95] tracking-[-0.01em] text-parchment">
+        <h1 className="font-display text-[clamp(3.25rem,9vw,6.25rem)] font-medium leading-[0.95] tracking-[-0.01em] gilt-stamp">
           Hello! I&apos;m Khushi.
         </h1>
 
-        <div className="mt-8 h-px w-16 bg-foxglove/70" aria-hidden />
+        <div className="mt-8 h-px w-16 bg-gilt/70" aria-hidden />
 
         <p className="mt-8 max-w-[34rem] text-[1.3rem] leading-[1.6] text-parchment sm:text-[1.4rem]">
           I build software for the messy parts of running a business: reconciling data, fixing slow workflows, and
@@ -45,18 +50,18 @@ export default function HomePage() {
         <div className="mt-10 flex flex-wrap items-baseline gap-x-7 gap-y-3">
           <Link
             href="/projects"
-            className="font-display text-[1.6rem] font-medium italic text-foxglove underline decoration-foxglove/40 hover:decoration-foxglove"
+            className="font-display text-[1.6rem] font-medium italic text-gilt underline decoration-gilt/40 hover:decoration-gilt"
           >
             View Projects
           </Link>
-          <a href="/resume.pdf" className="text-parchment underline decoration-vine hover:decoration-foxglove">
+          <a href="/resume.pdf" className="text-parchment underline decoration-tooling hover:decoration-gilt">
             Resume
           </a>
           <a
             href="https://github.com/khuthakkar"
             target="_blank"
             rel="noreferrer"
-            className="text-parchment underline decoration-vine hover:decoration-foxglove"
+            className="text-parchment underline decoration-tooling hover:decoration-gilt"
           >
             GitHub
           </a>
@@ -64,21 +69,22 @@ export default function HomePage() {
             href="https://www.linkedin.com/in/khushi-thakkar-/"
             target="_blank"
             rel="noreferrer"
-            className="text-parchment underline decoration-vine hover:decoration-foxglove"
+            className="text-parchment underline decoration-tooling hover:decoration-gilt"
           >
             LinkedIn
           </a>
           <a
             href="mailto:khushikthakkar@gmail.com"
-            className="text-parchment underline decoration-vine hover:decoration-foxglove"
+            className="text-parchment underline decoration-tooling hover:decoration-gilt"
           >
             Email
           </a>
         </div>
+        </div>
       </header>
 
       {/* Contents */}
-      <section className="grid gap-8 border-t border-vine pt-10 md:grid-cols-[12rem_1fr] md:gap-12">
+      <section className="grid gap-8 border-t border-tooling pt-10 md:grid-cols-[12rem_1fr] md:gap-12">
         <div>
           <h2 className="font-display text-[2rem] font-medium italic leading-tight text-parchment">
             Some of my latest work
@@ -96,11 +102,11 @@ export default function HomePage() {
         <div>
           <ol className="flex flex-col">
             {featured.map((p, i) => (
-              <li key={p.slug} className="border-b border-vine/70 py-7 first:pt-0">
+              <li key={p.slug} className="border-b border-tooling/70 py-7 first:pt-0">
                 <Link href={`/projects/${p.slug}`} className="group block no-underline">
                   <div className="flex items-baseline">
-                    <span className="w-12 shrink-0 font-display text-[1.35rem] text-foxglove">{roman(i + 1)}.</span>
-                    <span className="font-display text-[1.75rem] font-medium leading-tight text-parchment decoration-foxglove/60 underline-offset-4 group-hover:underline">
+                    <span className="w-12 shrink-0 font-display text-[1.35rem] text-gilt">{roman(i + 1)}.</span>
+                    <span className="font-display text-[1.75rem] font-medium leading-tight text-parchment decoration-gilt/60 underline-offset-4 group-hover:underline">
                       {p.title}
                     </span>
                     {p.roleAndDate && (
@@ -116,7 +122,7 @@ export default function HomePage() {
                     <ul className="mt-4 flex max-w-[40rem] flex-col gap-2">
                       {(mode === "impact" ? p.highlights.impact : p.highlights.technical).slice(0, 2).map((x) => (
                         <li key={x} className="flex gap-3 text-parchment/90">
-                          <span className="text-foxglove" aria-hidden>
+                          <span className="text-gilt" aria-hidden>
                             –
                           </span>
                           <span>{x}</span>
@@ -133,14 +139,14 @@ export default function HomePage() {
       </section>
 
       {/* Currently exploring */}
-      <section className="mt-20 grid gap-6 border-t border-vine pt-10 md:grid-cols-[12rem_1fr] md:gap-12">
+      <section className="mt-20 grid gap-6 border-t border-tooling pt-10 md:grid-cols-[12rem_1fr] md:gap-12">
         <h2 className="font-display text-[2rem] font-medium italic leading-tight text-parchment">
           Currently Exploring
         </h2>
         <ul className="flex flex-col gap-2 text-parchment/90">
           {EXPLORING.map((x) => (
             <li key={x} className="flex gap-3">
-              <span className="text-foxglove" aria-hidden>
+              <span className="text-gilt" aria-hidden>
                 –
               </span>
               <span>{x}</span>
@@ -168,7 +174,7 @@ function ModeButton({
       aria-pressed={active}
       className={
         active
-          ? "text-parchment underline decoration-foxglove decoration-2 underline-offset-[6px]"
+          ? "text-parchment underline decoration-gilt decoration-2 underline-offset-[6px]"
           : "text-lichen hover:text-parchment"
       }
     >

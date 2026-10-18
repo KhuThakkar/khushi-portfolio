@@ -5,23 +5,21 @@
 @import "@fontsource-variable/source-serif-4/opsz-italic.css";
 
 /*
-  Night forest palette.
-  canopy      page background, a deep green rather than black
-  understory  raised surfaces, used sparingly
-  vine        rules and borders
-  parchment   body text
-  lichen      secondary text
-  foxglove    accent: links, numerals, focus
-  nightshade  accent fill for selected states
+  Antique cloth binding palette, taken from Victorian book covers.
+  cloth      page background: dark green book cloth
+  board      raised surfaces, used sparingly
+  tooling    rules and borders: faded gold tooling
+  parchment  body text
+  lichen     secondary text
+  gilt       accent: gold stamping for titles, numerals, links, focus
 */
 @theme {
-  --color-canopy: #0e1712;
-  --color-understory: #15221a;
-  --color-vine: #2b3d31;
-  --color-parchment: #e8e2d2;
-  --color-lichen: #a2ad99;
-  --color-foxglove: #c4a6e2;
-  --color-nightshade: #4b3266;
+  --color-cloth: #17211b;
+  --color-board: #1f2b23;
+  --color-tooling: #4a4a32;
+  --color-parchment: #e9e1cc;
+  --color-lichen: #a8a68f;
+  --color-gilt: #c9a961;
 
   --font-display: "Cormorant Garamond Variable", "Cormorant Garamond", Georgia, serif;
   --font-serif: "Source Serif 4 Variable", "Source Serif 4", Georgia, serif;
@@ -29,7 +27,7 @@
 
 @layer base {
   html {
-    background: var(--color-canopy);
+    background: var(--color-cloth);
     color-scheme: dark;
   }
 
@@ -43,17 +41,27 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Moonlight through the canopy: a fixed layer so it never scrolls or seams */
+  /* Book cloth: a darker vignette toward the edges, like a worn cover */
   body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+      radial-gradient(120% 90% at 50% 35%, rgb(40 56 44 / 0.55), transparent 70%),
+      radial-gradient(140% 120% at 50% 50%, transparent 55%, rgb(0 0 0 / 0.45) 100%);
+  }
+
+  /* Fine cloth grain */
+  body::after {
     content: "";
     position: fixed;
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background:
-      radial-gradient(60rem 36rem at 88% -8%, rgb(120 84 168 / 0.32), transparent 62%),
-      radial-gradient(40rem 30rem at 70% 18%, rgb(196 166 226 / 0.07), transparent 65%),
-      radial-gradient(60rem 50rem at -12% 112%, rgb(52 82 62 / 0.6), transparent 62%);
+    opacity: 0.09;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.85  0 0 0 0 0.8  0 0 0 0 0.6  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
 
   .font-display {
@@ -61,7 +69,7 @@
   }
 
   ::selection {
-    background: var(--color-nightshade);
+    background: rgb(201 169 97 / 0.35);
     color: var(--color-parchment);
   }
 
@@ -71,7 +79,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-foxglove);
+    outline: 2px solid var(--color-gilt);
     outline-offset: 3px;
     border-radius: 2px;
   }
@@ -82,7 +90,7 @@
   flex: 1 1 auto;
   min-width: 2rem;
   margin: 0 0.6rem;
-  border-bottom: 1px dotted var(--color-vine);
+  border-bottom: 1px dotted var(--color-tooling);
   transform: translateY(-0.35em);
 }
 
@@ -122,4 +130,20 @@ details[open] .chevron {
     animation: none;
     transition: none;
   }
+}
+
+/* Gold-stamped title: a soft metallic gradient clipped to the letters */
+.gilt-stamp {
+  background: linear-gradient(175deg, #e8d29a 0%, #c9a961 45%, #9c7e3e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* A cover panel: double gold rule like the tooled border of a book */
+.cover-frame {
+  position: relative;
+  border: 1px solid rgb(201 169 97 / 0.55);
+  outline: 1px solid rgb(201 169 97 / 0.25);
+  outline-offset: -9px;
 }

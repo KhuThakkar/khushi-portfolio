@@ -86,7 +86,7 @@ export default function ProjectsPage() {
       </header>
 
       {/* Filter */}
-      <div className="mt-12 border-y border-vine py-5" role="group" aria-label="Filter by topic">
+      <div className="mt-12 border-y border-tooling py-5" role="group" aria-label="Filter by topic">
         <ul className="flex flex-wrap gap-x-5 gap-y-2 text-[0.92rem]">
           {allTags.map((t) => (
             <li key={t}>
@@ -96,7 +96,7 @@ export default function ProjectsPage() {
                 aria-pressed={tag === t}
                 className={
                   tag === t
-                    ? "text-foxglove underline decoration-foxglove underline-offset-[5px]"
+                    ? "text-gilt underline decoration-gilt underline-offset-[5px]"
                     : "text-lichen hover:text-parchment"
                 }
               >
@@ -112,12 +112,12 @@ export default function ProjectsPage() {
         {filtered.map((p) => {
           const chapter = linkProjects.indexOf(p) + 1;
           return (
-            <li key={p.slug} className="border-b border-vine/70 py-8">
+            <li key={p.slug} className="border-b border-tooling/70 py-8">
               <Link href={`/projects/${p.slug}`} className="group grid gap-x-6 no-underline sm:grid-cols-[4rem_1fr]">
-                <span className="font-display text-[1.5rem] leading-tight text-foxglove">{roman(chapter)}.</span>
+                <span className="font-display text-[1.5rem] leading-tight text-gilt">{roman(chapter)}.</span>
                 <div>
                   <div className="flex items-baseline">
-                    <span className="font-display text-[2rem] font-medium leading-tight text-parchment decoration-foxglove/60 underline-offset-4 group-hover:underline">
+                    <span className="font-display text-[2rem] font-medium leading-tight text-parchment decoration-gilt/60 underline-offset-4 group-hover:underline">
                       {p.title}
                     </span>
                     {p.roleAndDate && (
@@ -148,17 +148,17 @@ export default function ProjectsPage() {
           <h2 className="font-display text-[2rem] font-medium italic leading-tight text-parchment">
             Other work experience
           </h2>
-          <div className="flex flex-col border-t border-vine">
+          <div className="flex flex-col border-t border-tooling">
             {sortedExperienceOnly.map((p) => {
               const header = EXPERIENCE_HEADERS[p.slug];
               return (
-                <details key={p.slug} className="group border-b border-vine">
+                <details key={p.slug} className="group border-b border-tooling">
                   <summary className="flex items-baseline gap-4 py-5">
-                    <span className="chevron inline-block w-3 shrink-0 text-foxglove" aria-hidden>
+                    <span className="chevron inline-block w-3 shrink-0 text-gilt" aria-hidden>
                       ›
                     </span>
                     <span className="flex flex-1 flex-col gap-1 sm:flex-row sm:items-baseline">
-                      <span className="font-display text-[1.45rem] font-medium leading-tight text-parchment group-hover:text-foxglove">
+                      <span className="font-display text-[1.45rem] font-medium leading-tight text-parchment group-hover:text-gilt">
                         {header ? header.title : p.title}
                       </span>
                       {header && (
@@ -184,7 +184,7 @@ export default function ProjectsPage() {
                         href={p.presentationPdfUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="mt-6 inline-block text-foxglove underline decoration-foxglove/40 hover:decoration-foxglove"
+                        className="mt-6 inline-block text-gilt underline decoration-gilt/40 hover:decoration-gilt"
                       >
                         View presentation (PDF)
                       </a>
@@ -208,7 +208,7 @@ function HighlightList({ title, items }: { title: string; items: string[] }) {
       <ul className="mt-2 flex flex-col gap-2 text-[0.97rem] text-parchment/90">
         {items.map((x) => (
           <li key={x} className="flex gap-3">
-            <span className="text-foxglove" aria-hidden>
+            <span className="text-gilt" aria-hidden>
               –
             </span>
             <span>{x}</span>

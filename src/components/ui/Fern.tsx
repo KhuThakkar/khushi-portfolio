@@ -44,14 +44,36 @@ export function Fern({ className = "" }: { className?: string }) {
     <svg viewBox="0 0 260 420" className={className} aria-hidden="true" fill="none">
       <path
         d={`M${p0.x} ${p0.y}Q${p1.x} ${p1.y} ${p2.x} ${p2.y}`}
-        stroke="var(--color-foxglove)"
-        strokeOpacity="0.7"
-        strokeWidth="1.25"
+        stroke="var(--color-gilt)"
+        strokeOpacity="0.85"
+        strokeWidth="1.5"
         strokeLinecap="round"
       />
       {leaves.map((d, i) => (
-        <path key={i} d={d} stroke="var(--color-foxglove)" strokeOpacity="0.32" strokeWidth="1" />
+        <path key={i} d={d} fill="var(--color-gilt)" fillOpacity="0.55" stroke="var(--color-gilt)" strokeOpacity="0.8" strokeWidth="0.75" />
       ))}
+    </svg>
+  );
+}
+
+/**
+ * A small tooled corner flourish, like the stamped corners on a book cover.
+ * Drawn for the top-left corner; rotate it for the others.
+ */
+export function CornerFlourish({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} aria-hidden="true" fill="none">
+      <path d="M4 44V12a8 8 0 0 1 8-8h32" stroke="var(--color-gilt)" strokeOpacity="0.7" strokeWidth="1" />
+      <path d="M10 30c0-11 9-20 20-20" stroke="var(--color-gilt)" strokeOpacity="0.55" strokeWidth="1" />
+      <path
+        d="M14 14c5-1 9 1 10 6-5 1-9-1-10-6Z"
+        fill="var(--color-gilt)"
+        fillOpacity="0.6"
+        stroke="var(--color-gilt)"
+        strokeOpacity="0.8"
+        strokeWidth="0.6"
+      />
+      <circle cx="9" cy="9" r="1.6" fill="var(--color-gilt)" fillOpacity="0.8" />
     </svg>
   );
 }

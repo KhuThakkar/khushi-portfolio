@@ -12,10 +12,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <div className="mx-auto max-w-5xl px-5 pt-6 sm:px-8">
-          <nav className="flex items-baseline justify-between border-b border-vine pb-4">
+          <nav className="flex items-baseline justify-between border-b border-tooling pb-4">
             <Link
               href="/"
-              className="font-display text-2xl font-medium tracking-wide text-parchment no-underline hover:text-foxglove"
+              className="font-display text-2xl font-medium tracking-wide text-parchment no-underline hover:text-gilt"
             >
               KT<span className="text-lichen">.lab</span>
             </Link>

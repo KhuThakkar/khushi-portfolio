@@ -10,7 +10,7 @@ type Props = {
 };
 
 const linkClass =
-  "text-foxglove underline decoration-foxglove/40 underline-offset-4 hover:decoration-foxglove";
+  "text-gilt underline decoration-gilt/40 underline-offset-4 hover:decoration-gilt";
 
 export function MediaAndArchitectureCard({ videoUrl, pitchDeckUrl, executiveSummaryUrl, architectureTable }: Props) {
   const hasMedia = videoUrl || pitchDeckUrl || executiveSummaryUrl;
@@ -28,7 +28,7 @@ export function MediaAndArchitectureCard({ videoUrl, pitchDeckUrl, executiveSumm
             <thead>
               <tr>
                 {architectureTable!.headers.map((h, i) => (
-                  <th key={i} className="whitespace-nowrap border-b border-foxglove/40 pb-2 pr-4 font-semibold text-parchment">
+                  <th key={i} className="whitespace-nowrap border-b border-gilt/40 pb-2 pr-4 font-semibold text-parchment">
                     {h}
                   </th>
                 ))}
@@ -36,7 +36,7 @@ export function MediaAndArchitectureCard({ videoUrl, pitchDeckUrl, executiveSumm
             </thead>
             <tbody>
               {architectureTable!.rows.map((row, i) => (
-                <tr key={i} className="border-b border-vine">
+                <tr key={i} className="border-b border-tooling">
                   {row.map((cell, j) => (
                     <td key={j} className="max-w-[200px] py-3 pr-4 align-top text-parchment/90 sm:max-w-[280px]">
                       {cell}
@@ -66,7 +66,7 @@ export function MediaAndArchitectureCard({ videoUrl, pitchDeckUrl, executiveSumm
             controls
             playsInline
             preload="metadata"
-            className="max-h-[70vh] w-full rounded-sm border border-vine bg-understory object-contain"
+            className="max-h-[70vh] w-full rounded-sm border border-tooling bg-board object-contain"
           >
             Your browser does not support the video tag.
           </video>
