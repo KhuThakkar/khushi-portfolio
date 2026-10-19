@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { CornerFlourish, roman } from "@/components/ui/Ornaments";
-import { CHAPTERS, WORK_SLUGS, APPENDIX_SLUGS, shortTitle } from "@/content/book";
+import { CHAPTERS, WORK_SLUGS, APPENDIX_SLUGS, EXPERIENCE, shortTitle } from "@/content/book";
 
 export default function HomePage() {
   return (
@@ -72,7 +72,14 @@ export default function HomePage() {
         <h2 className="text-center font-display text-[2.4rem] font-medium italic text-parchment">Contents</h2>
         <ol className="mx-auto mt-10 flex max-w-[44rem] flex-col gap-9">
           {CHAPTERS.map((c) => {
-            const subs = c.href === "/work" ? WORK_SLUGS : c.href === "/appendix" ? APPENDIX_SLUGS : [];
+            const subs =
+              c.href === "/work"
+                ? WORK_SLUGS.map((slug) => ({ href: `/work/${slug}`, label: shortTitle(slug) }))
+                : c.href === "/experience"
+                  ? EXPERIENCE.map((e) => ({ href: "/experience", label: e.company }))
+                  : c.href === "/appendix"
+                    ? APPENDIX_SLUGS.map((slug) => ({ href: `/appendix/${slug}`, label: shortTitle(slug) }))
+                    : [];
             return (
               <li key={c.href}>
                 <Link href={c.href} className="group flex items-baseline no-underline">
@@ -84,14 +91,14 @@ export default function HomePage() {
                 <p className="mt-1 pl-12 italic text-lichen">{c.summary}</p>
                 {subs.length > 0 && (
                   <ol className="mt-3 flex flex-col gap-1.5 pl-12">
-                    {subs.map((slug, i) => (
-                      <li key={slug}>
+                    {subs.map((sub, i) => (
+                      <li key={`${sub.href}-${sub.label}`}>
                         <Link
-                          href={`${c.href}/${slug}`}
+                          href={sub.href}
                           className="flex items-baseline text-parchment/90 no-underline hover:text-gilt"
                         >
                           <span className="w-8 shrink-0 text-[0.9rem] text-gilt/80">{roman(i + 1).toLowerCase()}.</span>
-                          <span>{shortTitle(slug)}</span>
+                          <span>{sub.label}</span>
                         </Link>
                       </li>
                     ))}
