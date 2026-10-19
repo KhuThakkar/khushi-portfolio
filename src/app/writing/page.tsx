@@ -4,7 +4,7 @@ export default function WritingPage() {
   return (
     <BookPage>
       <RunningHead>Chapter III · Writing</RunningHead>
-      <ChapterOpening label="Chapter III" title="Writing" subtitle="Research and essays." />
+      <ChapterOpening label="Chapter III" title="Writing" subtitle="Research, product analytics, and notes on building with AI." />
 
       <div className="mx-auto mt-12 flex max-w-[42rem] flex-col gap-16">
         <section>
@@ -15,6 +15,22 @@ export default function WritingPage() {
           <Placeholder className="mt-5">
             a 3 to 4 sentence summary: the question you asked, your main argument, and why it matters. Then add the PDF to
             public/writing/ and link it here.
+          </Placeholder>
+        </section>
+
+        <section>
+          <SectionTitle>Product analytics</SectionTitle>
+          <Placeholder className="mt-4">
+            case studies that take a question (&quot;why is retention dropping?&quot;) through SQL, a chart, and a
+            recommendation. Lead with the Aajera case study from Sprint 2.
+          </Placeholder>
+        </section>
+
+        <section>
+          <SectionTitle>On building with AI</SectionTitle>
+          <Placeholder className="mt-4">
+            short memos on what you learn building AI into real products. Lead with the Aajera Quick Add eval framework
+            from Sprint 3: how you built 150 test prompts, what you measured, what you changed.
           </Placeholder>
         </section>
 

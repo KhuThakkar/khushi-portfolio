@@ -25,10 +25,30 @@ export default async function WorkChapter({ params }: { params: Promise<{ slug: 
 
 function AajeraChapter({ label }: { label: string }) {
   const sections = [
-    { heading: "In brief", hint: "three lines: the problem, what you built, and the result (for example, 30 beta users)." },
-    { heading: "Why I built it", hint: "you never found a calendar you liked, so you built your own; then friends asked to use it. About 100 words." },
-    { heading: "What it looks like", hint: "two or three screenshots: the calendar, the monthly reflection prompt, the daily view." },
-    { heading: "Decisions I made", hint: "two or three product choices and why, such as making daily reflection optional, or keeping daily, weekly, and monthly views separate." },
+    {
+      heading: "The problem",
+      hint: "the gap you noticed: existing calendars help you plan time but not reflect on it. Who feels this most and why. 3 to 5 sentences.",
+    },
+    {
+      heading: "What I built",
+      hint: "a short tour: core calendar + tasks, the monthly and daily reflection prompts, natural-language quick add. Two or three screenshots.",
+    },
+    {
+      heading: "Decisions I made",
+      hint: "the product choices and the reasoning. Lead with the AI governance call: AI actions require preview and confirmation before writing user data. Then: optional daily reflection, separate daily/weekly/monthly views, Google Calendar as an optional integration.",
+    },
+    {
+      heading: "What I measured",
+      hint: "once Sprint 2 runs: your North Star (Weekly Active Planner), the activation funnel, D7 retention, Quick Add adoption. Call out the one metric that moved most.",
+    },
+    {
+      heading: "How the AI performs",
+      hint: "once Sprint 3 runs: eval framework over ~150 natural-language scenarios, intent/date/time accuracy, cost per request, before/after a prompt or model change.",
+    },
+    {
+      heading: "What I learned",
+      hint: "two or three sentences. What surprised you, what you would do differently, what the next version becomes.",
+    },
   ];
   return (
     <article className="flex flex-col gap-8">
@@ -36,7 +56,7 @@ function AajeraChapter({ label }: { label: string }) {
         <ChapterOpening
           label={label}
           title="Aajera"
-          subtitle="A calendar and task planner that prompts you to reflect on your day and month."
+          subtitle="A calendar and task planner with natural-language quick add and reflection prompts."
         />
       </Paper>
       {sections.map((s) => (

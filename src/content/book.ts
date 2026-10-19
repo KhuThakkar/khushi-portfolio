@@ -17,7 +17,7 @@ export type Chapter = {
 export const CHAPTERS: Chapter[] = [
   { numeral: "I", title: "About", href: "/about", summary: "Who I am, and what I make outside of work" },
   { numeral: "II", title: "Work", href: "/work", summary: "Products I've built and the decisions behind them" },
-  { numeral: "III", title: "Writing", href: "/writing", summary: "Research and essays" },
+  { numeral: "III", title: "Writing", href: "/writing", summary: "Research, product analytics, and notes on building with AI" },
   { numeral: "IV", title: "Now", href: "/now", summary: "What I'm reading, learning, and thinking about this month" },
   { numeral: "", title: "Appendix", href: "/appendix", summary: "Earlier projects and internships" },
 ];

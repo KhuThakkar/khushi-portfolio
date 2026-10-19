@@ -36,7 +36,7 @@ export default function HomePage() {
             href="/work"
             className="font-display text-[1.6rem] font-medium italic text-gilt underline decoration-gilt/40 hover:decoration-gilt"
           >
-            View Projects
+            Begin reading
           </Link>
           <a href="/resume.pdf" className="text-parchment underline decoration-tooling hover:decoration-gilt">
             Resume

@@ -34,7 +34,7 @@ export function WorkList() {
             const isAajera = slug === AAJERA_SLUG;
             const title = isAajera ? "Aajera" : p?.title;
             const subtitle = isAajera
-              ? "A calendar and task planner that prompts you to reflect on your day and month."
+              ? "A calendar and task planner with natural-language quick add and reflection prompts."
               : p?.subtitle;
             return (
               <li key={slug} className="border-b border-tooling/70 py-7 first:pt-0">
