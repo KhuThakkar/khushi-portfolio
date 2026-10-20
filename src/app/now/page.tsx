@@ -1,4 +1,4 @@
-import { BookPage, ChapterOpening, DashList, PageTurn, Paper, Placeholder, RunningHead, SectionTitle } from "@/components/book/Book";
+import { BookPage, ChapterOpening, DashList, PageTurn, Paper, RunningHead, SectionTitle } from "@/components/book/Book";
 
 // Update this page once a month, and change the month below.
 const MONTH = "October 2026";
@@ -9,6 +9,17 @@ const EXPLORING = [
   "System design",
   "AI evals and reliability",
   "How products change once real users get involved",
+];
+
+const CLIPPINGS: { title: string; source: string; date: string; href: string; take: string }[] = [
+  {
+    title: "Brian Chesky interview: AI agents need their own operating system",
+    source: "TechCrunch",
+    date: "October 1, 2026",
+    href: "https://techcrunch.com/2026/10/01/brian-chesky-interview-ai-agents-need-their-own-operating-system/",
+    take:
+      "What stood out to me was the difference between removing friction and removing the experience itself. In travel, browsing, comparing, and exploring are part of the value, so turning everything into a chatbot can actually make the product worse. I like the idea that AI should automate the parts people do not care about, not erase the parts they enjoy.",
+  },
 ];
 
 const THIS_MONTH: { term: string; body: string }[] = [
@@ -65,12 +76,26 @@ export default function NowPage() {
       <div className="mt-8">
         <Paper>
           <section className="mx-auto max-w-[42rem]">
-            <SectionTitle>Marginalia</SectionTitle>
+            <SectionTitle>Clippings</SectionTitle>
             <p className="mt-2 italic text-lichen">Notes on things I&apos;ve read in the news.</p>
-            <Placeholder className="mt-5">
-              two or three short notes. For each: a link to the article, what it&apos;s about in one line, and your take
-              in two or three sentences.
-            </Placeholder>
+            <ol className="mt-6 flex flex-col gap-8">
+              {CLIPPINGS.map((c) => (
+                <li key={c.href}>
+                  <a
+                    href={c.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-display text-[1.3rem] font-medium leading-tight text-parchment underline decoration-gilt/40 underline-offset-4 hover:decoration-gilt"
+                  >
+                    {c.title}
+                  </a>
+                  <p className="mt-1 text-[0.9rem] italic text-lichen">
+                    {c.source} &middot; {c.date}
+                  </p>
+                  <p className="mt-3 text-[1.0625rem] leading-[1.75] text-parchment/90">{c.take}</p>
+                </li>
+              ))}
+            </ol>
           </section>
         </Paper>
       </div>
