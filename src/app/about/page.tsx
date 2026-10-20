@@ -25,6 +25,30 @@ const PLATES: { file: string; label: string; caption: string }[] = [
   },
 ];
 
+const SHELF: { title: string; author: string; cover: string; note: string }[] = [
+  {
+    title: "Fahrenheit 451",
+    author: "Ray Bradbury",
+    cover: "fahrenheit-451.jpg",
+    note:
+      "My favorite book of all time. I love how it shows a world so overstimulated by technology and constant entertainment that people stop noticing, questioning, and really experiencing their own lives. That idea of what it means to actually be awake to the world is what made the book stick with me.",
+  },
+  {
+    title: "Pride and Prejudice",
+    author: "Jane Austen",
+    cover: "pride-and-prejudice.jpg",
+    note:
+      "What I loved most was that both Elizabeth and Darcy had to look inward before they could really understand each other. They were forced to see how much their own pride, assumptions, and biases had shaped the way they saw the other person.",
+  },
+  {
+    title: "Sunrise on the Reaping",
+    author: "Suzanne Collins",
+    cover: "sunrise-on-the-reaping.jpg",
+    note:
+      "I loved how much of the book is about who gets to control the story. It made me think about how power is not just controlling what people can do, but controlling what they believe happened in the first place.",
+  },
+];
+
 export default function AboutPage() {
   return (
     <BookPage>
@@ -70,6 +94,37 @@ export default function AboutPage() {
                 <PlateFigure key={p.file} index={i} {...p} />
               ))}
             </div>
+          </section>
+        </Paper>
+      </div>
+
+      <div className="mt-8">
+        <Paper>
+          <section className="mx-auto max-w-[46rem]">
+            <SectionTitle>On my shelf</SectionTitle>
+            <p className="mt-2 italic text-lichen">A few of my favorites.</p>
+            <ol className="mt-8 grid gap-10 sm:grid-cols-3 sm:gap-6">
+              {SHELF.map(({ title, author, cover, note }) => (
+                <li key={title}>
+                  <figure>
+                    <div className="relative mx-auto aspect-[2/3] w-full max-w-[11rem]">
+                      <Image
+                        src={`/now/${cover}`}
+                        alt={`Cover of ${title} by ${author}`}
+                        fill
+                        sizes="(min-width: 640px) 180px, 55vw"
+                        className="object-contain mix-blend-multiply"
+                      />
+                    </div>
+                    <figcaption className="mt-4 text-center">
+                      <p className="font-display text-[1.2rem] font-medium leading-tight text-parchment">{title}</p>
+                      <p className="text-[0.9rem] italic text-lichen">by {author}</p>
+                      <p className="mt-3 text-left text-[0.95rem] leading-[1.65] text-parchment/90">{note}</p>
+                    </figcaption>
+                  </figure>
+                </li>
+              ))}
+            </ol>
           </section>
         </Paper>
       </div>
