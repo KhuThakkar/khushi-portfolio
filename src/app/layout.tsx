@@ -1,32 +1,35 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
-import { Spotlight } from "@/components/animations/Spotlight";
-import { BreathingHue } from "@/components/animations/BreathingHue";
 
 export const metadata: Metadata = {
   title: "Khushi Thakkar — Portfolio",
-  description: "Product-minded full stack engineer portfolio.",
+  description: "Khushi Thakkar builds software for the messy parts of running a business.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="antialiased" style={{ background: "#000" }}>
-      <body className="relative min-h-screen bg-black text-white" style={{ background: "#000" }}>
-        <BreathingHue />
-        <Spotlight />
-        <div className="relative z-10 mx-auto max-w-6xl px-5 pt-6">
-          <nav className="flex items-center justify-between">
-            <Link href="/" className="text-sm font-medium text-white/90 hover:text-white transition-colors">
-              KT<span className="text-white/50">.lab</span>
+    <html lang="en">
+      <body>
+        <div className="mx-auto max-w-5xl px-5 pt-6 sm:px-8">
+          <nav className="flex items-baseline justify-between border-b border-tooling pb-4">
+            <Link
+              href="/"
+              className="font-display text-2xl font-medium tracking-wide text-parchment no-underline hover:text-gilt"
+            >
+              KT<span className="text-lichen">.lab</span>
             </Link>
-            <div className="flex items-center gap-4 text-base font-semibold text-white/80">
-              <Link href="/projects" className="hover:text-white transition-colors">Projects</Link>
-              <a href="/resume.pdf" className="hover:text-white transition-colors">Resume</a>
+            <div className="flex items-baseline gap-6 text-[0.95rem]">
+              <Link href="/#contents" className="text-lichen no-underline hover:text-parchment">
+                Contents
+              </Link>
+              <a href="/resume.pdf" className="text-lichen no-underline hover:text-parchment">
+                Resume
+              </a>
             </div>
           </nav>
         </div>
-        <div className="relative z-10">{children}</div>
+        {children}
       </body>
     </html>
   );

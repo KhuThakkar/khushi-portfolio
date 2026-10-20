@@ -35,7 +35,7 @@ export const projects: Project[] = [
     slug: "premo-ventures",
     title: "Premo Ventures",
     subtitle: "Building a Multi-Location Retail ERP & Operational Intelligence Platform",
-    roleAndDate: "Business Technology Lead · May 2025 - Present",
+    roleAndDate: "Product Lead · June 2025 - Present",
     cardImageUrl: "/projects/premo-ventures/premo-logo.png",
     tags: ["Product Development", "Customer Discovery", "Full Stack", "APIs", "Workflow System", "Analytics", "ERP", "Agile", "Jira", "Supabase", "Next.js", "Node.js", "Tailwind CSS"],
     role: ["Product Engineering"],
@@ -43,7 +43,8 @@ export const projects: Project[] = [
     highlights: {
       impact: [
         "Standardized reporting workflows across multiple retail branches.",
-        "Helped reduce operational inconsistencies by ~20% by standardizing reporting workflows across branches.",
+        "Replaced a manual Excel reconciliation process with automated integrations, cutting weekly reconciliation time from about 4 hours to 1.",
+        "Developed this work into Debtera, a product for other cannabis retailers that placed 2nd of 200+ teams in the GW New Venture Competition ($7,500 in funding).",
         "Improved reporting clarity for management decision-making.",
         "Shifted teams away from spreadsheet-dependent reconciliation.",
       ],
@@ -102,7 +103,8 @@ export const projects: Project[] = [
         heading: "Impact (Current Stage)",
         body:
           "• Standardized reporting workflows across multiple retail branches\n" +
-          "• Helped reduce operational inconsistencies by ~20% by standardizing reporting workflows across branches\n" +
+          "• Cut weekly reconciliation time from about 4 hours to 1 by replacing a manual Excel process with automated integrations\n" +
+          "• Developed this work into Debtera, which placed 2nd of 200+ teams in the GW New Venture Competition ($7,500 in funding)\n" +
           "• Improved reporting clarity for management decision-making\n" +
           "• Shifted teams away from spreadsheet-dependent reconciliation",
       },
