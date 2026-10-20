@@ -13,7 +13,7 @@ export default function HomePage() {
         <CornerFlourish className="pointer-events-none absolute bottom-3 right-3 h-11 w-11 rotate-180" />
         <CornerFlourish className="pointer-events-none absolute bottom-3 left-3 h-11 w-11 -rotate-90" />
 
-        <h1 className="font-display text-[clamp(3.25rem,9vw,6.25rem)] font-medium leading-[0.95] tracking-[-0.01em] gilt-stamp">
+        <h1 className="font-display text-[clamp(2.5rem,6.5vw,4.5rem)] font-medium leading-[0.95] tracking-[-0.01em] gilt-stamp">
           Hello! I&apos;m Khushi.
         </h1>
 
