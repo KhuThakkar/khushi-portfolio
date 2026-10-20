@@ -13,6 +13,14 @@ const EXPLORING = [
 
 const CLIPPINGS: { title: string; source: string; date: string; href: string; take: string }[] = [
   {
+    title: "Amazon says its AI chips will work with popular coding language, challenging Nvidia",
+    source: "Reuters",
+    date: "October 19, 2026",
+    href: "https://www.reuters.com/business/retail-consumer/amazon-says-its-ai-chips-will-work-with-popular-coding-language-challenging-2026-10-19/",
+    take:
+      "What interested me was that Amazon is competing with Nvidia by making the decision to switch easier, not just by saying its chip is better. It made me think about how much of a product's advantage can come from everything built around it. Once people have invested enough time and work into a system, convenience can become a stronger moat than the product itself.",
+  },
+  {
     title: "Brian Chesky interview: AI agents need their own operating system",
     source: "TechCrunch",
     date: "October 1, 2026",
