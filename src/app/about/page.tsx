@@ -64,8 +64,7 @@ export default function AboutPage() {
       <div className="mt-8">
         <Paper>
           <section className="mx-auto max-w-[46rem]">
-            <SectionTitle>Plates</SectionTitle>
-            <p className="mt-2 italic text-lichen">Outside of work.</p>
+            <SectionTitle>Outside of work</SectionTitle>
             <div className="mt-8 grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-5">
               {PLATES.map((p, i) => (
                 <PlateFigure key={p.file} index={i} {...p} />
@@ -110,7 +109,7 @@ function PlateFigure({ file, label, caption, index }: { file: string; label: str
         />
       </div>
       <figcaption className="mt-3 text-center text-[0.92rem] italic text-lichen">
-        <span className="not-italic text-parchment">Plate {roman(index + 1)}. {label}.</span>{" "}
+        <span className="not-italic text-parchment">{roman(index + 1)}. {label}.</span>{" "}
         {caption}
       </figcaption>
     </figure>
