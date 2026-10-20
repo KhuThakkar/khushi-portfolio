@@ -65,25 +65,6 @@ export default function NowPage() {
       <div className="mt-8">
         <Paper>
           <section className="mx-auto max-w-[42rem]">
-            <SectionTitle>Reading now</SectionTitle>
-            <h3 className="mt-4 font-display text-[1.5rem] font-medium leading-tight text-parchment">
-              The Finishing School <span className="italic text-lichen">by Gail Godwin</span>
-            </h3>
-            <p className="mt-3 text-[1.0625rem] leading-[1.75] text-parchment/90">
-              The book opens with Justin remembering Ursula, a woman who once warned her not to &ldquo;congeal&rdquo;
-              into a finished version of herself. Ursula believed the people who stay most alive are the ones who
-              keep moving, changing, and wanting new things. I&apos;m only at the beginning, but that idea has
-              already stuck with me. There is something comforting about treating yourself as unfinished, especially
-              when it is so easy to be made into feeling like you should already know exactly who you are and where
-              you are going.
-            </p>
-          </section>
-        </Paper>
-      </div>
-
-      <div className="mt-8">
-        <Paper>
-          <section className="mx-auto max-w-[42rem]">
             <SectionTitle>Marginalia</SectionTitle>
             <p className="mt-2 italic text-lichen">Notes on things I&apos;ve read in the news.</p>
             <Placeholder className="mt-5">

@@ -8,6 +8,16 @@ import { AAJERA_SLUG, WORK_SLUGS, projectBySlug } from "@/content/book";
 
 type Mode = "impact" | "technical";
 
+const AAJERA_HIGHLIGHTS: Record<Mode, string[]> = {
+  impact: [
+    "In early beta with real users.",
+    "Plan in plain English. Aajera turns what you type into tasks and calendar events, then keeps planning and reflection together.",
+  ],
+  technical: [
+    "Designed a typed intent pipeline for Quick Add that parses natural language into structured task/event objects, validates edge cases, handles timezone logic, and writes safely to Supabase.",
+  ],
+};
+
 export function WorkList() {
   const [mode, setMode] = useState<Mode>("impact");
 
@@ -59,6 +69,8 @@ export function WorkList() {
                         className="mt-4 max-w-[40rem]"
                         items={(mode === "impact" ? p.highlights.impact : p.highlights.technical).slice(0, 2)}
                       />
+                    ) : isAajera ? (
+                      <DashList className="mt-4 max-w-[40rem]" items={AAJERA_HIGHLIGHTS[mode].slice(0, 2)} />
                     ) : (
                       <Placeholder className="mt-4 max-w-[40rem]">two highlights, such as 30 beta users and one product decision you made.</Placeholder>
                     )}

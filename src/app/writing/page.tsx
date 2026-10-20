@@ -1,4 +1,4 @@
-import { BookPage, ChapterOpening, PageTurn, Paper, Placeholder, RunningHead, SectionTitle } from "@/components/book/Book";
+import { BookPage, ChapterOpening, PageTurn, Paper, RunningHead } from "@/components/book/Book";
 
 export default function WritingPage() {
   return (
@@ -45,40 +45,6 @@ export default function WritingPage() {
                 Read the full paper (PDF)
               </a>
             </p>
-          </section>
-        </Paper>
-      </div>
-
-      <div className="mt-8">
-        <Paper>
-          <section className="mx-auto max-w-[42rem]">
-            <SectionTitle>Product analytics</SectionTitle>
-            <Placeholder className="mt-4">
-              the Sprint 2 Aajera case study, once it&apos;s run.
-            </Placeholder>
-          </section>
-        </Paper>
-      </div>
-
-      <div className="mt-8">
-        <Paper>
-          <section className="mx-auto max-w-[42rem]">
-            <SectionTitle>On building with AI</SectionTitle>
-            <Placeholder className="mt-4">
-              the Sprint 3 Quick Add eval memo, once it&apos;s built.
-            </Placeholder>
-          </section>
-        </Paper>
-      </div>
-
-      <div className="mt-8">
-        <Paper>
-          <section className="mx-auto max-w-[42rem]">
-            <SectionTitle>Strategy memos</SectionTitle>
-            <Placeholder className="mt-4">
-              one-to-two page memos on companies you&apos;re interested in: their situation, one problem or opportunity,
-              and what you would do. Add one every couple of weeks.
-            </Placeholder>
           </section>
         </Paper>
       </div>
